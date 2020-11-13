@@ -1,17 +1,25 @@
-# Javascript Notes (ES6)
+# Javascript Notes
+
+## Sources
 
 https://www.youtube.com/watch?v=WZQc7RUAg18&t=121s - Old JS Vs ES6
 https://scrimba.com/p/p4Mrt9/cWV4JUb - Introduction to ES6
 
+https://www.interviewbit.com/javascript-interview-questions/?fbclid=IwAR2OehZmE0GFK8e6pZYm1YfiLBA8OI0ufoblOlV4lZ5UtbZVDRCWkQaP7mA#implicit-type-coercion - JavaScript Interview Questions
+
+https://www.guru99.com/javascript-interview-questions-answers.html?fbclid=IwAR2OehZmE0GFK8e6pZYm1YfiLBA8OI0ufoblOlV4lZ5UtbZVDRCWkQaP7mA - Top 85 JavaScript Interview Questions & Answers
+
 ## Contents
 
-[Old-Javascript](#Old-Javascript) 
+[Old-Javascript](#Old-Javascript)
 
 [ES6](#ES6)
 
-# Old-Javascript
+[JavaScript-Interview-Questions](#JavaScript-Interview-Questions)
 
-## Variables 
+# Old Javascript
+
+## Variables
 
 ```Javascript
 var names = ["Peter", "John"];
@@ -96,7 +104,7 @@ var user = {
   }
 };
 
-user.sayName(); 
+user.sayName();
 
 // 'this' refers to the object.
 ```
@@ -193,7 +201,7 @@ counter = 5;
 
 // Const means we can't redeclare variable
 
-// Always use Const and whenever you want to re-assign the value of a variable use let. 
+// Always use Const and whenever you want to re-assign the value of a variable use let.
 ```
 
 ```Javascript
@@ -239,7 +247,7 @@ const user = {
   age:  24
 };
 
-const {name, age} = user; 
+const {name, age} = user;
 
 console.log(name);
 ```
@@ -279,7 +287,7 @@ const user = {
   }
 };
 
-user.sayName(); 
+user.sayName();
 ```
 
 ## Event Listener
@@ -414,7 +422,7 @@ prom.then(data => {
 
 
 
-## Classes 
+## Classes
 
 ```Javascript
 class Animal {
@@ -455,3 +463,62 @@ get metaData() {
   return `Type: ${this.type}, Legs: ${this.legs}`
 }
 ```
+
+# JavaScript Interview Questions
+
+## Basic JS Interview Questions
+
+1. What are the different data types present in Javascript
+
+**String** - Represents a series of characters and is written with quotes. Can be represented using single or double quotes.
+
+var str = "Peter";
+
+**Number** - Represents a number and can be written with or without decimals.
+
+var x = 3;
+var y = 3.6;
+
+**BigInt** - This data type is used to store numbers which are above the limitation of the Number data type.
+
+var bigInteger = 234567890123456789012345678901234567890;
+
+**Boolean** - Represents a logical entity and can have two values: true or false. Booleans are generally used for conditional testing.
+
+**Undefined** - When a variable is declared but not assigned, it has the value of undefined and it's type is also undefined.
+
+var x - Value of x is undefined
+
+**Null** - It represents a non-existent or invalid value.
+
+var z = null;
+
+**Symbol** - It is a new data type introduced in the ES6 version of JavaScript. 
+
+var symbol1 = Symbol('symbol');
+
+**typeof** - Primitive Types:
+
+typeof "Peter" - Returns "String"
+typeof 3.14 - Returns "Number"
+typeof true - Returns "Boolean"
+typeof 234567890123456789012345678901234567890n - Returns "bigint"
+typeof undefined - Returns "undefined"
+typeof null - Returns "object"
+typeof Symbol ('symbol') - Returns Symbol
+
+**Non-Primitive Types** - Primitive data types can store only a single value. To store multiple and complex values, non-primitive data types are used.
+
+var obj1 = {
+  x: 43
+  y: "Hello World!",
+  z: function(){
+    return this.x;
+  }
+}
+
+2. 
+
+
+
+
