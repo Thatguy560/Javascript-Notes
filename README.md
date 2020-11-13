@@ -583,6 +583,150 @@ Since JavaScript is a loosely(dynamically) typed language, variables in JS are n
 var a = 23;
 var a = "Hello World"
 
+6. What is NaN property in JavaScript?
+
+NaN property means "Not a Number" value. It indicates a value is not a legal number.
+
+**typeof** of a NaN will return a **Number**.
+
+To check if a value is NaN, we use the isNan() function.
+
+isNaN("Hello") - Returns true
+isNaN(345) - Returns false
+isNaN("1") - Returns false - "1" is converted to a Number type which results in a 0.
+isNaN(true) - Returns false - True is converted to a Number type that results in a 1 (A number).
+isNaN(false) - Returns false
+isNaN(undefined) - Returns true
+
+7. Explain passed by value and passed by reference
+
+var obj = { name: "Vivek", surname: "Bisht" };
+
+var obj2 = obj;
+
+In the above example, the assign operator, directly passes the location of the variable obj to the variable obj2. In other words, the reference of the variable obj is passed to the var obj2.
+
+var obj = #8711; - obj pointing to address of { name: "Vivek", surname: "Bisht" }
+
+var obj2 = obj;
+
+var obj2 = #8711
+
+// Changing the value of obj1
+
+obj1.name = "Akki";
+console.log(obj2);
+
+This returns { name: "Vivek", surname: "Bisht" } since both the variables are pointing to the same address.
+
+From the above example, we can see that while passing non-primitive data types, the assign operator directly passes the address (reference).
+
+Therefore, non-primitive data types are always **Passed by reference**.
+
+8. What is an 'Immediately Invoked' function in JavaScript?
+
+**An Immediately Invoked Function (known as IIFE) is a function that runs as soon as it's defined**.
+
+Syntax of IIFE: 
+
+(function(){
+  // Do something;
+})();
+
+A function runs only when it is invoked. If we do not invoke the function, the function declaration is returned: 
+
+**In order to invoke the function we use the second set of parenthesis**
+
+9. Explain Higher Order Functions in JavaScript.
+
+**Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions**.
+
+function higherOrder2() {
+  return function() {
+    return "Do something"; 
+  }
+}
+
+var x = higherOrder2();
+x() - Returns "Do something"
+
+10. Explain "this" keyword.
+
+The "this" keyword refers to the object that the function is a property of.
+
+the value of "this" keyword will always depend on the object that is invoking the function.
+
+**The "this" keyword refers to the object that the function is a property of**.
+
+Example 1
+
+var obj = {
+  name: "Vivek", 
+  getName: function(){
+    console.log(this.name);
+  }
+}
+
+obj.getName(); - Will return "Vivek"
+
+Example 2 
+
+var obj = {
+  name: "Vivek",
+  getName: function(){
+    console.log(this.name);
+  }
+}
+
+var getName = obj.getName;
+
+var obj2 = { name: "Peter", getName };
+obj2.getName(); - Will return "Peter"
+
+Although the getName function is declared inside the object obj, at the time of invocation, getName() is a property of **obj2**, therefore the "this" keyword will refer to **obj2**.
+
+11. Explain call(), apply() and bind() methods.
+
+**call() - This method accepts arguments** 
+
+It's a predefined method in Javascript.
+
+This method invokes a method (function) by specifying the owner object.
+
+Example:
+
+function sayHello() {
+  return "Hello" + this.name;
+}
+
+var obj = { name: "Sandy" };
+
+sayHello.call(obj) - Returns "Hello Sandy"
+
+Example 2: 
+
+var person = {
+  age: 25,
+  getAge: function() {
+    return this.age;
+  }
+}
+
+var person2 = { age: 54 };
+person.getAge.call(person2) - This will return 54
+
+call() accepts arguments: 
+
+function saySomething(message) {
+  return this.name + "is" + message;
+}
+
+var person4 = { name: "John" };
+
+saySomething.call(person4, "awesome" ) - This will return "John is awesome"
+
+**apply()**
+
 
 
 
