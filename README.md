@@ -17,6 +17,10 @@ https://www.guru99.com/javascript-interview-questions-answers.html?fbclid=IwAR2O
 
 [JavaScript-Interview-Questions](#JavaScript-Interview-Questions)
 
+[Basic-JS-Interview-Questions](#Basic-JS-Interview-Questions)
+
+[Advanced-JS-Interview-Questions](#Advanced-JS-Interview-Questions)
+
 # Old Javascript
 
 ## Variables
@@ -517,7 +521,68 @@ var obj1 = {
   }
 }
 
-2. 
+2. Explain Hoisting in JavaScript.
+
+Hoisting is a default behaviour of JavaScript where all the variable and function declarations are moved on top.
+
+This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+hoistedFunction();
+
+function hoistedFunction() {
+  console.log("Hello World!");
+}
+
+**Note - Variable initializations are not hoisted, only variable declarations are hoisted:**
+
+var x;
+console.log(x);
+x = 23;
+
+**Note - To avoid hoisting, you can run JavaScript in strict mode by using "use strict" on top of the code:**
+
+"use strict";
+
+3. Difference between "==" and "===" operators.
+
+Both are comparison operators. The difference between both operators is that "==" is used to compare values, whereas "===" is used to compare both value and data types.
+
+2 == "2" - Returns True
+2 === "2" - Returns False
+
+4. Explain implicit Type Coercion in JavaScript.
+
+Implicit type coercion in JavaScript is automatic conversion of value from one data type to antoher. It takes place when the operands of an expression are of a different data types.
+
+var x = 3;
+var y = "3"
+x + y - Returns "33" 
+
+var x = 24;
+var y = "Hello";
+x + y - Returns "24Hello";
+
+5. Is JavaScript a statically typed or a dynamically typed language?
+
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during **run-time** in contrast to a statically typed language, where the type of variable is checked during **compile-time**.
+
+**Static typing**
+
+- Variables have types
+- Values have types
+- Variables cannot change type
+
+**Dynamic typing**
+
+- Variables have no types
+- Values have types 
+- Variables change type dynamically
+
+Since JavaScript is a loosely(dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type. For example, a variable which is assigned a number type can be converted to a string type.
+
+var a = 23;
+var a = "Hello World"
+
 
 
 
