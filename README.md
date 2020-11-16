@@ -474,20 +474,20 @@ get metaData() {
 
 **String** - Represents a series of characters and is written with quotes. Can be represented using single or double quotes.
 
-```
+```Javascript
 var str = "Peter";
 ```
 
 **Number** - Represents a number and can be written with or without decimals.
 
-```
+```Javascript
 var x = 3;
 var y = 3.6;
 ```
 
 **BigInt** - This data type is used to store numbers which are above the limitation of the Number data type.
 
-```
+```Javascript
 var bigInteger = 234567890123456789012345678901234567890;
 ```
 
@@ -499,19 +499,19 @@ var x - Value of x is undefined
 
 **Null** - It represents a non-existent or invalid value.
 
-```
+```Javascript
 var z = null;
 ```
 
 **Symbol** - It is a new data type introduced in the ES6 version of JavaScript. 
 
-```
+```Javascript
 var symbol1 = Symbol('symbol');
 ```
 
 **typeof** - Primitive Types:
 
-```
+```Javascript
 typeof "Peter" - Returns "String"
 typeof 3.14 - Returns "Number"
 typeof true - Returns "Boolean"
@@ -523,7 +523,7 @@ typeof Symbol ('symbol') - Returns Symbol
 
 **Non-Primitive Types** - Primitive data types can store only a single value. To store multiple and complex values, non-primitive data types are used.
 
-```
+```Javascript
 var obj1 = {
   x: 43
   y: "Hello World!",
@@ -543,7 +543,7 @@ This means that irrespective of where the variables and functions are declared, 
   
 hoistedFunction();
 
-```
+```Javascript
 function hoistedFunction() {
   console.log("Hello World!");
 }
@@ -551,7 +551,7 @@ function hoistedFunction() {
 
 **Note - Variable initializations are not hoisted, only variable declarations are hoisted:**
 
-```
+```Javascript
 var x;
 console.log(x);
 x = 23;
@@ -565,7 +565,7 @@ x = 23;
 
 Both are comparison operators. The difference between both operators is that "==" is used to compare values, whereas "===" is used to compare both value and data types.
 
-```
+```Javascript
 2 == "2" - Returns True
 2 === "2" - Returns False
 ```
@@ -574,13 +574,13 @@ Both are comparison operators. The difference between both operators is that "==
 
 Implicit type coercion in JavaScript is automatic conversion of value from one data type to another. It takes place when the operands of an expression are of a different data types.
 
-```
+```Javascript
 var x = 3;
 var y = "3"
 x + y - Returns "33" 
 ```
 
-```
+```Javascript
 var x = 24;
 var y = "Hello";
 x + y - Returns "24Hello";
@@ -606,7 +606,7 @@ JavaScript is a dynamically typed language. In a dynamically typed language, the
 
 Since JavaScript is a loosely(dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type. For example, a variable which is assigned a number type can be converted to a string type.
 
-```
+```Javascript
 var a = 23;
 var a = "Hello World"
 ```
@@ -619,7 +619,7 @@ NaN property means "Not a Number" value. It indicates a value is not a legal num
 
 To check if a value is NaN, we use the isNan() function.
 
-```
+```Javascript
 isNaN("Hello") - Returns true
 isNaN(345) - Returns false
 isNaN("1") - Returns false - "1" is converted to a Number type which results in a 0.
@@ -630,7 +630,7 @@ isNaN(undefined) - Returns true
 
 ## 7. Explain passed by value and passed by reference
 
-```
+```Javascript
 var obj = { name: "Vivek", surname: "Bisht" };
 
 var obj2 = obj;
@@ -638,11 +638,11 @@ var obj2 = obj;
 
 In the above example, the assign operator, directly passes the location of the variable obj to the variable obj2. In other words, the reference of the variable obj is passed to the var obj2.
 
-```
+```Javascript
 var obj = #8711; - obj pointing to address of { name: "Vivek", surname: "Bisht" }
 ```
 
-```
+```Javascript
 var obj2 = obj;
 
 var obj2 = #8711
@@ -650,7 +650,7 @@ var obj2 = #8711
 
 // Changing the value of obj1
 
-```
+```Javascript
 obj1.name = "Akki";
 console.log(obj2);
 ```
@@ -667,7 +667,7 @@ Therefore, non-primitive data types are always **Passed by reference**.
 
 Syntax of IIFE: 
 
-```
+```Javascript
 (function(){
   // Do something;
 })();
@@ -681,7 +681,7 @@ A function runs only when it is invoked. If we do not invoke the function, the f
 
 **Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions**.
 
-```
+```Javascript
 function higherOrder2() {
   return function() {
     return "Do something"; 
@@ -689,7 +689,7 @@ function higherOrder2() {
 }
 ```
 
-```
+```Javascript
 var x = higherOrder2();
 x() - Returns "Do something"
 ```
@@ -704,7 +704,7 @@ the value of "this" keyword will always depend on the object that is invoking th
 
 Example 1
 
-```
+```Javascript
 var obj = {
   name: "Vivek", 
   getName: function(){
@@ -713,13 +713,13 @@ var obj = {
 }
 ```
 
-```
+```Javascript
 obj.getName(); - Will return "Vivek"
 ```
 
 Example 2 
 
-```
+```Javascript
 var obj = {
   name: "Vivek",
   getName: function(){
@@ -728,11 +728,11 @@ var obj = {
 }
 ```
 
-```
+```Javascript
 var getName = obj.getName;
 ```
 
-```
+```Javascript
 var obj2 = { name: "Peter", getName };
 obj2.getName(); - Will return "Peter"
 ```
@@ -749,13 +749,13 @@ This method invokes a method (function) by specifying the owner object.
 
 Example:
 
-```
+```Javascript
 function sayHello() {
   return "Hello" + this.name;
 }
 ```
 
-```
+```Javascript
 var obj = { name: "Sandy" };
 ```
 
@@ -763,7 +763,7 @@ sayHello.call(obj) - Returns "Hello Sandy"
 
 Example 2: 
 
-```
+```Javascript
 var person = {
   age: 25,
   getAge: function() {
@@ -777,12 +777,13 @@ person.getAge.call(person2) - This will return 54
 
 call() accepts arguments: 
 
-```
+```Javascript
 function saySomething(message) {
   return this.name + "is" + message;
 }
 ```
-```
+
+```Javascript
 var person4 = { name: "John" };
 ```
 
@@ -792,12 +793,12 @@ saySomething.call(person4, "awesome" ) - This will return "John is awesome"
 
 The apply method is similar to the call method. The only difference is that call() takes arguments separately whereas, apply() method takes arguments as an array.
 
-```
+```Javascript
 function saySomething(message) {
   return this.name + " is " + message;
 }
 ```
-```
+```Javascript
 var person4 = { name: "John" };
 saySomething.apply(person4, ['awesome]) - Returns "John is awesome" 
 ```
@@ -806,7 +807,7 @@ saySomething.apply(person4, ['awesome]) - Returns "John is awesome"
 
 This method returns a new function, where the value of "this" keyword will be bound to the owner object, which is provided as a parameter.
 
-```
+```Javascript
 var bikeDetails = {
   displayDetails: function(registrationNumber, brandName) {
     return this.name + " ," + "bike details" + registrationNumber + "," + brandName;
@@ -815,7 +816,7 @@ var bikeDetails = {
 
 var person1 = { name: "Vivek" };
 ```
-```
+```Javascript
 var detailsOfPerson1 = bikeDetails.displayDetails.bind(person1, "TS0122", "Bullet");
 ```
 
@@ -830,7 +831,7 @@ Currying is an advanced technique to transform a function or arguments n, to n f
 
 Example
 
-```
+```Javascript
 function add (a) {
   return function(b){
     return a + b;
@@ -842,7 +843,7 @@ add(3)(4) - This would return 7
 
 Another example of a curried function
 
-```
+```Javascript
 function multiply(a, b){
   return a*b
 }
@@ -877,7 +878,7 @@ There are three types of scopes in JS:
 
 Variables or functions declared in the global namespace have a global scope, which means all the variables and functions having global scope can be accessed from anywhere inside the code.
 
-```
+```Javascript
 var globalVariable = "Hello World";
 
 function sendMessage() {
@@ -899,7 +900,7 @@ sendMessage2();
 
 Any variables or functions declared inside a function have local/function scope, which means that all variables and functions declared inside the function can be accessed from within the function and not outside of it.
 
-```
+```Javascript
 function awesomeFunction() {
   var a = 2;
 
@@ -920,7 +921,7 @@ Block scope is related to the variables declared using **let** and **const**, va
 
 Block scope tells us that any variable declared inside a block {}, can be accessed only inside a block and cannot be accessed outside of it.
 
-```
+```Javascript
 let x = 45;
 
 
@@ -939,7 +940,7 @@ console.log(i)
 
 Javascript engine also uses Scope to find variables.
 
-```
+```Javascript
 var y = 24 
 
 function favFunction() {
@@ -967,7 +968,7 @@ If the variable is not found in the global scope as well, a reference error will
 
 Closures is an ability of a function to remember the variables and functions that are declared in the outer scope.
 
-```
+```Javascript
 var Person = function(pName) {
   var name = pName;
 
@@ -982,7 +983,7 @@ console.log(person.getName());
 
 An example of closures
 
-```
+```Javascript
 function randomFunc() {
   var obj1 = { name:"Vivian", age:45 };
 
@@ -997,13 +998,13 @@ initialiseClosure();
 
 The function randomFunc() gets executed and returns a function where we assign it to a variable.
 
-```
+```Javascript
 var initaliseClosure = randomFunc();
 ```
 
 The returned function is then executed when we invoke initaliseClosure:
 
-```
+```Javascript
 initialiseClosure();
 ```
 
@@ -1011,7 +1012,7 @@ The line of code above outputs "Vivian is awesome" and this is because of Closur
 
 When the function 'randomFunc()' runs, it sees that the returning function is using the variable obj1 inside it:
 
-```
+```Javascript
 console.log(obj1.name + " is " + "awesome");
 ```
 
@@ -1035,7 +1036,7 @@ On top of the chain is **Object.prototype**. Every prototype inherits properties
 
 **A Prototype is a blueprint of an object.** Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
 
-```
+```Javascript
 var arr = [];
 arr.push(2);
 
@@ -1054,7 +1055,7 @@ In JavaScript, functions are treated as first-class citizens, they can be used a
 
 **Functions that are used as an argument to another function are called Callback functions.**
 
-```
+```Javascript
 function divideByHalf(sum) {
   console.log(Math.floor(sum / 2));
 }
@@ -1089,7 +1090,7 @@ Memoization is a form of caching where the return value of a function is cached 
 
 **Memoization is used for expensive function calls, for this demonstration however we have used a simple function.**
 
-```
+```Javascript
 function memoizedAddTo256() {
   var cache = {};
 
@@ -1117,7 +1118,7 @@ memoizedFunc(20); // Cached Return
 
 Recursion is a technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result.
 
-```
+```Javascript
 function add(number) {
   if (number <= 0) {
     return 0 
@@ -1136,7 +1137,7 @@ The above is an example of a recursive function:
 
 The function below calculates the sum of all the elements in an array by using recursion: 
 
-```
+```Javascript
 function computeSum(arr) {
   if(arr.length === 1) {
     return arr[0];
@@ -1156,7 +1157,7 @@ If we want to create multiple objects having similar properties and methods, Con
 
 **Name of a Constructor function should always be written in Pascal Notation: every word should start with a capital letter.**
 
-```
+```Javascript
 function Person(name, age, gender) {
   this.name = name;
   this.age = age;
@@ -1171,7 +1172,7 @@ console.log(person2);
 ```
 
 ES6 equivalent
-```
+```Javascript
 class Person {
   constructor(name, age, gender) {
     this.name = name
@@ -1210,7 +1211,7 @@ Arrow functions can only be used as a function expression.
 Below is a comparison between a normal function declaration and the arrow function declaration in detail. 
 
 
-```
+```Javascript
 // Traditional Function Expression
 var add = function(a, b){
   return a + b;
@@ -1222,7 +1223,7 @@ var arrowAdd = (a, b) => a + b;
 
 Arrow functions are declared without the function keyword. If there is only one returning expression then we don't need to use the return keyword as well in an arrow function as shown in the above example. Also, for functions for having just one line of code, curly braces {} can be omitted.
 
-```
+```Javascript
 // Traditional function expression
 
 var multiplyBy2 = function(num) {
@@ -1235,7 +1236,7 @@ var arrowMultiplyBy2 = num => num * 2;
 
 **If a function takes in only one argument, then the parenthesis() around the parameter can be omitted as shown in the code above.**
 
-```
+```Javascript
 var obj1 = {
   valueOfThis = function() {
     return this;
@@ -1267,7 +1268,7 @@ The **This** keyword inside an arrow function, does not refer to the object call
 
 With the introduction of ES6, keywords let and const were used to declare variables. 
 
-```
+```Javascript
 var var1 = 23;
 
 let var2 = 89;
@@ -1294,7 +1295,7 @@ Whereas, the variables declared with the let keyword are not added to the global
 
 **Var vs let in Functional Scope**
 
-```
+```Javascript
 function varVsLetFunction() {
   let awesomeCar1 = "Audi";
   var awesomeCar2 = "Mercedes";
@@ -1306,7 +1307,7 @@ console.log(awesomeCar2) // Throws an error
 
 Variables declared in a functional/local scope using var and let keywords behave exactly the same, meaning they can't be accessed from the outside the scope.
 
-```
+```Javascript
 {
   var variable3 = [1, 2, 3, 4];
 }
@@ -1342,7 +1343,7 @@ Variables declared with the **let** keyword inside the block scope cannot be acc
 
 Variables with the **const** keyword behave exactly like a variable declared with the let keyword with only one difference, **any variable declared with the const keyword cannot be reassigned.** 
 
-```
+```Javascript
 const y = 23;
 
 y = 44; // Throws an Error
@@ -1362,7 +1363,7 @@ Any number of arguments will be converted into an array using the rest parameter
 
 Rest parameter can be used by applying three dots (...) before the parameters. 
 
-```
+```Javascript
 function extractingArgs(...args) {
   return args[1];
 }
@@ -1385,7 +1386,7 @@ addAllArgs(1, 3, 4); // Returns 8
 
 **Rest parameter should always be used at the last parameter of a function:**
 
-```
+```Javascript
 // Correct way to use rest parameter
 
 function randomFunc2(a, b, ...args) {
@@ -1397,7 +1398,7 @@ function randomFunc2(a, b, ...args) {
 
 Although the syntax of Spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
 
-```
+```Javascript
 function addFourNumbers(num1,num2,num3,num4) {
   return num1+num2+num3+num4
 }
