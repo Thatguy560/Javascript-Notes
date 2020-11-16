@@ -32,7 +32,7 @@ var counter = 10;
 
 counter = 5;
 
-console.log(counter); ----> 5 (Variable has been redeclared)
+console.log(counter); ----> 5 (Variable has been re-declared)
 
 var counter = 5;
 
@@ -391,7 +391,7 @@ product.sayList();
 
 // extends allows an object to inherits properties from another object
 
-// super binds thse properties to constructor function
+// super binds these properties to constructor function
 ```
 
 ## Promises
@@ -470,22 +470,28 @@ get metaData() {
 
 # JavaScript Interview Questions
 
-## Basic JS Interview Questions
+**Basic JS Interview Questions**
 
-1. What are the different data types present in Javascript
+## 1. What are the different data types present in Javascript**
 
 **String** - Represents a series of characters and is written with quotes. Can be represented using single or double quotes.
 
+```
 var str = "Peter";
+```
 
 **Number** - Represents a number and can be written with or without decimals.
 
+```
 var x = 3;
 var y = 3.6;
+```
 
 **BigInt** - This data type is used to store numbers which are above the limitation of the Number data type.
 
+```
 var bigInteger = 234567890123456789012345678901234567890;
+```
 
 **Boolean** - Represents a logical entity and can have two values: true or false. Booleans are generally used for conditional testing.
 
@@ -495,14 +501,19 @@ var x - Value of x is undefined
 
 **Null** - It represents a non-existent or invalid value.
 
+```
 var z = null;
+```
 
 **Symbol** - It is a new data type introduced in the ES6 version of JavaScript. 
 
+```
 var symbol1 = Symbol('symbol');
+```
 
 **typeof** - Primitive Types:
 
+```
 typeof "Peter" - Returns "String"
 typeof 3.14 - Returns "Number"
 typeof true - Returns "Boolean"
@@ -510,9 +521,11 @@ typeof 234567890123456789012345678901234567890n - Returns "bigint"
 typeof undefined - Returns "undefined"
 typeof null - Returns "object"
 typeof Symbol ('symbol') - Returns Symbol
+```
 
 **Non-Primitive Types** - Primitive data types can store only a single value. To store multiple and complex values, non-primitive data types are used.
 
+```
 var obj1 = {
   x: 43
   y: "Hello World!",
@@ -520,51 +533,66 @@ var obj1 = {
     return this.x;
   }
 }
+```
 
-2. Explain Hoisting in JavaScript.
+## 2. Explain Hoisting in JavaScript.
 
 Hoisting is a default behaviour of JavaScript where all the variable and function declarations are moved on top.
 
-This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/hoisting-in-js-612a3c7b38136f060e0c52f9a7fc89f9e876d00c07d2afb83efb6639ebf6cb3b.png.gz)
 
+This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+  
 hoistedFunction();
 
+```
 function hoistedFunction() {
   console.log("Hello World!");
 }
+```
 
 **Note - Variable initializations are not hoisted, only variable declarations are hoisted:**
 
+```
 var x;
 console.log(x);
 x = 23;
+```
 
 **Note - To avoid hoisting, you can run JavaScript in strict mode by using "use strict" on top of the code:**
 
 "use strict";
 
-3. Difference between "==" and "===" operators.
+## 3. Difference between "==" and "===" operators.
 
 Both are comparison operators. The difference between both operators is that "==" is used to compare values, whereas "===" is used to compare both value and data types.
 
+```
 2 == "2" - Returns True
 2 === "2" - Returns False
+```
 
-4. Explain implicit Type Coercion in JavaScript.
+## 4. Explain implicit Type Coercion in JavaScript.
 
-Implicit type coercion in JavaScript is automatic conversion of value from one data type to antoher. It takes place when the operands of an expression are of a different data types.
+Implicit type coercion in JavaScript is automatic conversion of value from one data type to another. It takes place when the operands of an expression are of a different data types.
 
+```
 var x = 3;
 var y = "3"
 x + y - Returns "33" 
+```
 
+```
 var x = 24;
 var y = "Hello";
 x + y - Returns "24Hello";
+```
 
-5. Is JavaScript a statically typed or a dynamically typed language?
+## 5. Is JavaScript a statically typed or a dynamically typed language?
 
 JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during **run-time** in contrast to a statically typed language, where the type of variable is checked during **compile-time**.
+
+![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/static_vs_dynamic_typing-f961917369ccdfc7214abe8ef5bc2033217df59eb115ea7b75310cf94543941d.png.gz)
 
 **Static typing**
 
@@ -580,10 +608,12 @@ JavaScript is a dynamically typed language. In a dynamically typed language, the
 
 Since JavaScript is a loosely(dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type. For example, a variable which is assigned a number type can be converted to a string type.
 
+```
 var a = 23;
 var a = "Hello World"
+```
 
-6. What is NaN property in JavaScript?
+## 6. What is NaN property in JavaScript?
 
 NaN property means "Not a Number" value. It indicates a value is not a legal number.
 
@@ -591,31 +621,41 @@ NaN property means "Not a Number" value. It indicates a value is not a legal num
 
 To check if a value is NaN, we use the isNan() function.
 
+```
 isNaN("Hello") - Returns true
 isNaN(345) - Returns false
 isNaN("1") - Returns false - "1" is converted to a Number type which results in a 0.
 isNaN(true) - Returns false - True is converted to a Number type that results in a 1 (A number).
 isNaN(false) - Returns false
 isNaN(undefined) - Returns true
+```
 
-7. Explain passed by value and passed by reference
+## 7. Explain passed by value and passed by reference
 
+```
 var obj = { name: "Vivek", surname: "Bisht" };
 
 var obj2 = obj;
+```
 
 In the above example, the assign operator, directly passes the location of the variable obj to the variable obj2. In other words, the reference of the variable obj is passed to the var obj2.
 
+```
 var obj = #8711; - obj pointing to address of { name: "Vivek", surname: "Bisht" }
+```
 
+```
 var obj2 = obj;
 
 var obj2 = #8711
+```
 
 // Changing the value of obj1
 
+```
 obj1.name = "Akki";
 console.log(obj2);
+```
 
 This returns { name: "Vivek", surname: "Bisht" } since both the variables are pointing to the same address.
 
@@ -623,34 +663,40 @@ From the above example, we can see that while passing non-primitive data types, 
 
 Therefore, non-primitive data types are always **Passed by reference**.
 
-8. What is an 'Immediately Invoked' function in JavaScript?
+## 8. What is an 'Immediately Invoked' function in JavaScript?
 
 **An Immediately Invoked Function (known as IIFE) is a function that runs as soon as it's defined**.
 
 Syntax of IIFE: 
 
+```
 (function(){
   // Do something;
 })();
+```
 
 A function runs only when it is invoked. If we do not invoke the function, the function declaration is returned: 
 
 **In order to invoke the function we use the second set of parenthesis**
 
-9. Explain Higher Order Functions in JavaScript.
+## 9. Explain Higher Order Functions in JavaScript.
 
 **Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions**.
 
+```
 function higherOrder2() {
   return function() {
     return "Do something"; 
   }
 }
+```
 
+```
 var x = higherOrder2();
 x() - Returns "Do something"
+```
 
-10. Explain "this" keyword.
+## 10. Explain "this" keyword.
 
 The "this" keyword refers to the object that the function is a property of.
 
@@ -660,32 +706,42 @@ the value of "this" keyword will always depend on the object that is invoking th
 
 Example 1
 
+```
 var obj = {
   name: "Vivek", 
   getName: function(){
     console.log(this.name);
   }
 }
+```
 
+```
 obj.getName(); - Will return "Vivek"
+```
 
 Example 2 
 
+```
 var obj = {
   name: "Vivek",
   getName: function(){
     console.log(this.name);
   }
 }
+```
 
+```
 var getName = obj.getName;
+```
 
+```
 var obj2 = { name: "Peter", getName };
 obj2.getName(); - Will return "Peter"
+```
 
 Although the getName function is declared inside the object obj, at the time of invocation, getName() is a property of **obj2**, therefore the "this" keyword will refer to **obj2**.
 
-11. Explain call(), apply() and bind() methods.
+## 11. Explain call(), apply() and bind() methods.
 
 **call() - This method accepts arguments** 
 
@@ -695,16 +751,21 @@ This method invokes a method (function) by specifying the owner object.
 
 Example:
 
+```
 function sayHello() {
   return "Hello" + this.name;
 }
+```
 
+```
 var obj = { name: "Sandy" };
+```
 
 sayHello.call(obj) - Returns "Hello Sandy"
 
 Example 2: 
 
+```
 var person = {
   age: 25,
   getAge: function() {
@@ -714,18 +775,440 @@ var person = {
 
 var person2 = { age: 54 };
 person.getAge.call(person2) - This will return 54
+```
 
 call() accepts arguments: 
 
+```
 function saySomething(message) {
   return this.name + "is" + message;
 }
-
+```
+```
 var person4 = { name: "John" };
+```
 
 saySomething.call(person4, "awesome" ) - This will return "John is awesome"
 
 **apply()**
+
+The apply method is similar to the call method. The only difference is that call() takes arguments separately whereas, apply() method takes arguments as an array.
+
+```
+function saySomething(message) {
+  return this.name + " is " + message;
+}
+```
+```
+var person4 = { name: "John" };
+saySomething.apply(person4, ['awesome]) - Returns "John is awesome" 
+```
+
+**bind()**
+
+This method returns a new function, where the value of "this" keyword will be bound to the owner object, which is provided as a parameter.
+
+```
+var bikeDetails = {
+  displayDetails: function(registrationNumber, brandName) {
+    return this.name + " ," + "bike details" + registrationNumber + "," + brandName;
+  }
+}
+
+var person1 = { name: "Vivek" };
+```
+```
+var detailsOfPerson1 = bikeDetails.displayDetails.bind(person1, "TS0122", "Bullet");
+```
+
+// Binds the displayDetails function to the person1 object
+
+detailsOfPerson1();
+// Returns Vivek, bike details: TS0452, Thunderbird
+
+## 12. What is 'Currying' in JavaScript?
+
+Currying is an advanced technique to transform a function or arguments n, to n functions of one or less arguments.
+
+Example
+
+```
+function add (a) {
+  return function(b){
+    return a + b;
+  }
+}
+```
+
+add(3)(4) - This would return 7
+
+Another example of a curried function
+
+```
+function multiply(a, b){
+  return a*b
+}
+
+function currying(fn) {
+  return function(a) {
+    return function(b) {
+      return fn(a,b);
+    }
+  }
+}
+
+var curiedMultiply = currying(multiply)
+
+multiply(4, 3) // Returns 12
+curriedMultiply(4)(3) // Returns 12
+```
+
+## 13. Explain Scope and Scope Chain in Javascript
+
+Scope in JS, determines the accessibility of variables and functions at various parts in one's code.
+
+In general terms, the scope will let us know at a given part of code, what are the variables and functions that we can and cannot access.
+
+There are three types of scopes in JS:
+
+- Global Scope
+- Local or Function Scope
+- Block Scope
+
+**Global Scope**
+
+Variables or functions declared in the global namespace have a global scope, which means all the variables and functions having global scope can be accessed from anywhere inside the code.
+
+```
+var globalVariable = "Hello World";
+
+function sendMessage() {
+  return globalVariable; 
+}
+
+// Can access globalVariable since it's written in global space.
+
+function sendMessage2() {
+  return sendMessage();
+}
+
+// Can access sendMessage function since it's written in global space.
+
+sendMessage2();
+```
+
+**Function Scope**
+
+Any variables or functions declared inside a function have local/function scope, which means that all variables and functions declared inside the function can be accessed from within the function and not outside of it.
+
+```
+function awesomeFunction() {
+  var a = 2;
+
+  var multiplyBy2 = function() {
+    console.log(a*2) // Can access a since both a and multiplyBy2 are written inside the same function.
+  }
+}
+console.log(a);
+// Throws reference error since a is written in local scope and cannot be accessed outside.
+
+multiplyBy2();
+// Throws reference error since multiplyBy2 is written in local scope
+```
+
+**Block Scope**
+
+Block scope is related to the variables declared using **let** and **const**, variables declared with **var** don't have block scope {}.
+
+Block scope tells us that any variable declared inside a block {}, can be accessed only inside a block and cannot be accessed outside of it.
+
+```
+let x = 45;
+
+
+console.log(x); 
+// Gives reference error since x cannot be accessed outside of the block.
+
+for(let i = 1; i < 5; i++) {
+  // do something
+}
+
+console.log(i)
+// Gives reference error since i cannot be accessed outside of the for loop block.
+```
+
+**Scope Chain**
+
+Javascript engine also uses Scope to find variables.
+
+```
+var y = 24 
+
+function favFunction() {
+  var x = 667;
+  var anotherFavFunction = function() {
+    console.log(x); // Does not find x inside anotherFavFunction, so looks for variable inside favFunction, outputs 667
+  }
+
+  var yetAnotherFavFunction = function() {
+    console.log(y); // Does not find y inside yetAnotherFavFunction, so looks for variable inside favFunction and does not find it, so looks for variable in global scope, finds it and outputs 24
+  }
+
+  anotherFavFunction();
+  yetAnotherFavFunction();
+}
+
+favFunction();
+```
+
+If the JavaScript engine does not find the variable in local scope, it checks for the variable in the outer scope. If the variable does not exist in the outer scope, it tries to find the variable in the global scope.
+
+If the variable is not found in the global scope as well, a reference error will be thrown.
+
+## 14. Explain Closures in JavaScript
+
+Closures is an ability of a function to remember the variables and functions that are declared in the outer scope.
+
+```
+var Person = function(pName) {
+  var name = pName;
+
+  this.getName = function() {
+    return name;
+  }
+}
+
+var person = new Person("Neelesh");
+console.log(person.getName());
+```
+
+An example of closures
+
+```
+function randomFunc() {
+  var obj1 = { name:"Vivian", age:45 };
+
+  return function() {
+    console.log(obj1.name + " is " + " awesome"); // Has access to obj1 even when the randomFunc function is executed.
+  }
+}
+
+var initialClosure = randomFunc(); // Returned a function
+initialiseClosure();
+```
+
+The function randomFunc() gets executed and returns a function where we assign it to a variable.
+
+```
+var initaliseClosure = randomFunc();
+```
+
+The returned function is then executed when we invoke initaliseClosure:
+
+```
+initialiseClosure();
+```
+
+The line of code above outputs "Vivian is awesome" and this is because of Closure.
+
+When the function 'randomFunc()' runs, it sees that the returning function is using the variable obj1 inside it:
+
+```
+console.log(obj1.name + " is " + "awesome");
+```
+
+Therefore randomFunc(), instead of destroying the value of obj1 after execution, saves the value in the memory for further reference. This is the reason why the returning function is able to use the variable declared in the outer scope even after the function is already executed.
+
+**This ability of a function to store a variable for further reference even after being executed, is called Closure.x**
+
+## 15. What are object Prototypes?
+
+All JavaScript objects inherit properties from a Prototype.
+
+e.g. 
+
+Date objects inherit properties from the Date prototype
+
+Math objects inherit properties from the Math prototype
+
+Array objects inherit properties from the Array prototype
+
+On top of the chain is **Object.prototype**. Every prototype inherits properties and methods from the Object.prototype.
+
+**A Prototype is a blueprint of an object.** Prototype allows us to use properties and methods on an object even if the properties and methods do not exist on the current object.
+
+```
+var arr = [];
+arr.push(2);
+
+console.log(arr); // Outputs [2]
+```
+
+The reason being the use of prototypes. As we discussed before, Array objects inherit properties from the Array prototype.
+
+Whenever the property or method is not found on the current object, the Javascript engine will always try to look in it's prototype and if it still does not exist, it looks inside the prototype's prototype and so on.
+
+## 16. What are Callbacks?
+
+**A callback is a function that will be executed after another function gets executed.**
+
+In JavaScript, functions are treated as first-class citizens, they can be used as an argument of another function, can be returned by another function and be used as a property of an object.
+
+**Functions that are used as an argument to another function are called Callback functions.**
+
+```
+function divideByHalf(sum) {
+  console.log(Math.floor(sum / 2));
+}
+
+function multiplyBy2(sum) {
+  console.log(sum * 2)
+}
+
+function operationOnSum(num1, num2, operation) {
+  var sum = num1 + num2;
+  operation(sum);
+}
+
+operationOnSum(3, 3, divideByHalf); // Outputs 3
+
+operationOnSum(5, 5, multiplyBy2); // Outputs 20
+```
+
+In the above code, we are performing mathematic operations on the sum of two numbers.
+
+The operationOnSum function takes 3 arguments, first number, second number and the operation that has to be performed on their sum (**this is the callback)**.
+
+Both divideByHalf and multiplyBy2 functions are used as callback functions in the code above.
+
+These callback functions will be executed only after the function operationOnSum is executed.
+
+Therefore, Callback is a function that will be executed after another function gets executed.
+
+## 17. What is Memoization? 
+
+Memoization is a form of caching where the return value of a function is cached based on parameters. If the parameter of that function is not changed, the cached version of the function is returned.
+
+**Memoization is used for expensive function calls, for this demonstration however we have used a simple function.**
+
+```
+function memoizedAddTo256() {
+  var cache = {};
+
+  return function(num) {
+    if(num in cache) {
+      console.log("cached value");
+      return cache[num]
+    }
+    else{
+      cache[num] = num + 256;
+      return cache[num];
+    }
+  }
+}
+
+var memoizedFunc = memoizedAddTo256();
+
+memoizedFunc(20); // Normal Return
+memoizedFunc(20); // Cached Return
+```
+
+**Although using Memoization saves time, it results in a larger consumption of memory since we are storing all the computed results.**
+
+## 18. What is recursion in a programming language?
+
+Recursion is a technique to iterate over an operation by having a function call itself repeatedly until it arrives at a result.
+
+```
+function add(number) {
+  if (number <= 0) {
+    return 0 
+  } else {
+    return number + add(number - 1);
+  }
+}
+
+add(3) => 3 + add(2)
+3 + 2 + add(1)
+3 + 2 + 1 + add(0)
+3 + 2 + 1 + 0 = 6
+```
+
+The above is an example of a recursive function:
+
+The function below calculates the sum of all the elements in an array by using recursion: 
+
+```
+function computeSum(arr) {
+  if(arr.length === 1) {
+    return arr[0];
+  } else {
+    return arr.pop() + computeSum(arr);
+  }
+}
+
+computeSum([7, 8, 9, 99]); // Returns 123
+```
+
+## 19. What is the use of a Constructor function in JavaScript?
+
+Constructor functions are used to create objects in JavaScript?
+
+If we want to create multiple objects having similar properties and methods, Constructor functions are used.
+
+**Name of a Constructor function should always be written in Pascal Notation: every word should start with a capital letter.**
+
+```
+function Person(name, age, gender) {
+  this.name = name;
+  this.age = age;
+  this.gender = gender;
+}
+
+var person1 = new Person("Vivek", 76, "male");
+console.log(person1)
+
+var person2 = new Person("Courtney", 34, "female");
+console.log(person2);
+```
+
+ES6 equivalent
+```
+class Person {
+  constructor(name, age, gender) {
+    this.name = name
+    this.age = age
+    this.gender = gender 
+  }
+}
+```
+
+In the code above, we have created a Constructor function named Person.
+
+Whenever we want to create a new object of the type Person,
+
+we need to create is using the new keyword.
+
+## 20. What is DOM?
+
+DOM stands for 'Document Object Model'.
+
+When the browser tries to render a HTML document, it creates an object based on the HTML document called DOM. Using this DOM, we can manipulate or change various elements inside the HTML document.
+
+Below is an example of how HTML code gets converted to DOM.
+
+![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/dom-a2048e3ac210b3a8dfd37de157909798974e4074d0ce527432473b0f0c7689f4.png.gz)
+
+**Advanced JS Interview Questions**
+
+## 21. What are Arrow functions?
+
+
+
+
+
+
+
 
 
 
