@@ -17,8 +17,6 @@ https://www.guru99.com/javascript-interview-questions-answers.html?fbclid=IwAR2O
 
 [JavaScript-Interview-Questions](#JavaScript-Interview-Questions)
 
-[Basic-JS-Interview-Questions](#Basic-JS-Interview-Questions)
-
 [Advanced-JS-Interview-Questions](#Advanced-JS-Interview-Questions)
 
 # Old Javascript
@@ -1199,14 +1197,238 @@ Below is an example of how HTML code gets converted to DOM.
 
 ![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/dom-a2048e3ac210b3a8dfd37de157909798974e4074d0ce527432473b0f0c7689f4.png.gz)
 
-**Advanced JS Interview Questions**
+# Advanced-JS-Interview-Questions
 
 ## 21. What are Arrow functions?
 
+Arrow functions were introduced in the ES6 version of Javascript.
+
+This is a means of providing a shorter syntax for declaring functions. 
+
+Arrow functions can only be used as a function expression.
+
+Below is a comparison between a normal function declaration and the arrow function declaration in detail. 
 
 
+```
+// Traditional Function Expression
+var add = function(a, b){
+  return a + b;
+}
 
+// Arrow Function Expression 
+var arrowAdd = (a, b) => a + b; 
+```
 
+Arrow functions are declared without the function keyword. If there is only one returning expression then we don't need to use the return keyword as well in an arrow function as shown in the above example. Also, for functions for having just one line of code, curly braces {} can be omitted.
+
+```
+// Traditional function expression
+
+var multiplyBy2 = function(num) {
+  return num * 2
+}
+
+// Arrow function expression
+var arrowMultiplyBy2 = num => num * 2;
+```
+
+**If a function takes in only one argument, then the parenthesis() around the parameter can be omitted as shown in the code above.**
+
+```
+var obj1 = {
+  valueOfThis = function() {
+    return this;
+  }
+}
+var obj2 = {
+  valueOfThis: () => {
+    return this;
+  }
+}
+
+obj1.valueOfThis(); // Will return the object obj1
+obj2.valueOfThis(); // Will return window/global object
+```
+
+The biggest difference between the traditional function expression and the arrow function, is the handling of the **this** keyword. 
+
+By general definition, the **This** keyword always refers to the object that is calling the function. 
+
+As in the the example above, obj1.valueOfThis() returns obj1, since **this** keyword refers to the object calling the function.
+
+In arrow functions, there is no binding of **This** keyword.
+
+The **This** keyword inside an arrow function, does not refer to the object calling it. It rather inherits it's value of the parent scope which is the window object in this case.
+
+## 22. Differences between declaring variables using var, let and const.
+
+![img](assets/VariablesTable.png)
+
+With the introduction of ES6, keywords let and const were used to declare variables. 
+
+```
+var var1 = 23;
+
+let var2 = 89;
+
+function catchValues() {
+  console.log(var1)
+  console.log(var2)
+// Both the variables can be accessed anywhere since they are declared in the global scope.
+}
+
+window.variable1; // Returns the value 23
+window.variable2; // Returns undefined
+```
+
+The variables declared with the let keyword in the global scope behave just like the variable declared with the var keyword in the global scope.
+
+variables declared in the global scope with var and let keywords can be accessed from anywhere in the code.
+
+The one big difference is 
+
+**Variables that are declared with the var keyword in the global scope are added to the window/global object.** Therefore they can be accessed using window.variableName.
+
+Whereas, the variables declared with the let keyword are not added to the global object, therefore, trying to access such variables using window.variableName results in an error.
+
+**Var vs let in Functional Scope**
+
+```
+function varVsLetFunction() {
+  let awesomeCar1 = "Audi";
+  var awesomeCar2 = "Mercedes";
+}
+
+console.log(awesomeCar1) // Throws an error
+console.log(awesomeCar2) // Throws an error
+```
+
+Variables declared in a functional/local scope using var and let keywords behave exactly the same, meaning they can't be accessed from the outside the scope.
+
+```
+{
+  var variable3 = [1, 2, 3, 4];
+}
+
+console.log(variable3); // Outputs [1,2,3,4]
+
+{
+  let variable4 = [6, 55, -1. 2];
+}
+
+console.log(variable4) // Throws an Error 
+
+for(let i = 0; i < 2; i++){
+  // Do something
+}
+
+console.log(i) // Throws an Error 
+
+for(var j = 0; j < 2; i++){
+  // Do something
+}
+
+console.log(j) // Outputs 12
+````
+
+In JavaScript, a block means the code is written inside the curly braces {}.
+
+Variables declared with var keyword do not have block scope. it means a variable declared in block scope {} with the var keyword is the same as declaring the variable in the global scope.
+
+Variables declared with the **let** keyword inside the block scope cannot be accessed from outside of the block. 
+
+**Const Keyword**
+
+Variables with the **const** keyword behave exactly like a variable declared with the let keyword with only one difference, **any variable declared with the const keyword cannot be reassigned.** 
+
+```
+const y = 23;
+
+y = 44; // Throws an Error
+```
+
+## 23. What is the rest parameter and spread operator?
+
+Both rest parameter and spread operator were introduced in the ES6 version of JavaScript. 
+
+**Rest parameter (...)**
+
+It provides an improved way of handling parameters of a function.
+
+Using the rest parameter syntax, we can create functions that can take a variable number of arguments. 
+
+Any number of arguments will be converted into an array using the rest parameter. 
+
+Rest parameter can be used by applying three dots (...) before the parameters. 
+
+```
+function extractingArgs(...args) {
+  return args[1];
+}
+
+//extractingArgs(8,9,1) // Returns 9 
+
+function addAllArgs(...args) {
+  let sumOfArgs = 0;
+  let i = 0;
+  while(i < args.length) {
+    sumOfArgs += args[i];
+    i++ 
+  }
+  return sumOfArgs
+}
+
+addAllArgs(6, 5, 7, 99); // Returns 117
+addAllArgs(1, 3, 4); // Returns 8
+```
+
+**Rest parameter should always be used at the last parameter of a function:**
+
+```
+// Correct way to use rest parameter
+
+function randomFunc2(a, b, ...args) {
+ // Do something
+}
+```
+
+**Spread Operator (...)**
+
+Although the syntax of Spread operator is exactly the same as the rest parameter, spread operator is used to spread an array, and object literals. We also use spread operators where one or more arguments are expected in a function call.
+
+```
+function addFourNumbers(num1,num2,num3,num4) {
+  return num1+num2+num3+num4
+}
+
+let fourNumbers = [5, 6, 7, 8];
+
+addFourNumbers(...fourNumbers);
+// Spreads [5, 6, 7, 8] as 5,6,7,8
+
+let array1 = [3, 4, 5, 6];
+let clonedArray1 = [...array1];
+console.log(clonedArray1); // Outputs [3,4,5,6]
+
+let obj1 = {x: "Hello", y:"Bye"};
+let clonedObj1 = {...obj1}; // Spreads and clones obj1
+console.log(obj1);
+
+let obj2 = {z:"Yes", a:"No"};
+let mergedObj = {...obj1, ...obj2}; // Spreads both the objects and merges it.
+console.log(mergedObj)
+
+// Outputs {x:'Hello', y:'Bye',z:'Yes',a:'No'};
+```
+
+**Key differences between rest parameter and spread operator:**
+
+**Rest parameter is used to take a variable number of arguments and turns into an array while the spread operator takes an array or object and spreads it.**
+
+**Rest parameter is used in function declaration whereas the spread operator is used in function calls.**
+
+## 24. What is the use of promises in JavaScript? 
 
 
 
