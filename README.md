@@ -1431,9 +1431,281 @@ console.log(mergedObj)
 
 ## 24. What is the use of promises in JavaScript? 
 
+**Promises are used to handle asynchronous operations in JS.**
 
+Before promises, callbacks were made to handle asynchronous operations. But due to limited functionality of callback, using multiple callbacks to handle asynchronous can lead to unmanageable code.
 
+Promise object has four states -
 
+**Pending - Initial state of promise. This state represents that the promise has neither been fulfilled nor been rejected, it is in the pending state.**
 
+**Fulfilled - This state represents that the promise has been fulfilled, meaning the asynchronous operation is completed**
 
+**Rejected - This state represents that the promise has been rejected for some reason, meaning the asynchronous operation has failed.**
 
+**Settled - This state represents that the promise has been either rejected or fulfilled.**
+
+A promise is created using the **Promise** constructor which takes in a callback function with two parameters, **resolve** and **reject** respectively. 
+
+![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/js_promise_resolve_reject-b9d45530155ffca380f70f001941a223c460c655133d7a4e85197de8ab70d230.png.gz)
+
+**resolve** is a function that will be called, when the asynchronous operation has been completed.
+
+**reject** is a function that will be called, when the asynchronous operation fails or if some error occurs.
+
+**Promises are used to handle asynchronous operations like server requests, for the ease of understanding, in the example below we are using an operation to calculate the sum of three elements.**
+
+```Javascript
+function sumOfThreeElements(...elements) {
+  return new Promise((resolve, reject) => {
+    if(elements.length > 3) {
+      reject("Only three elements or less are allowed");
+    }
+    else {
+      let sum = 0;
+      let i = 0;
+      while(i < elements.length) {
+        sum += elements[i]
+        i++
+      }
+    resolve("Sum has been calculated." + sum);
+    }
+  })
+}
+```
+
+In the code above, we are calculating the sum of three elements, if the length of elements array is more than 3, promise is rejected, else the promise is resolved and the sum is returned.
+
+We can consume any promise by attaching then() and catch() methods to the consumer.
+
+![img](https://assets.interviewbit.com/assets/skill_interview_questions/javascript/js_promise_then_catch-d16745ddb8b1224df6c12104c68eb82b5ad8863ec65aec69b1b9fbd38e79fce2.png.gz)
+
+**then()** method is used to access the result when the promise is fulfilled.
+
+**catch()** method is used to access the result/error when the promise is rejected. 
+
+In the code below, we are consuming the promise:
+
+```
+sumOfThreeElements(7, 0, 33, 41)
+.then(result => console.log(result))
+.catch(error=> console.log(error));
+// In the code above, the promise is rejected hence the catch() method gets executed
+```
+
+## 25. What are classes in JavaScript?
+
+Introduced in the ES6 version, classes are just syntactic sugar for Function constructors.
+
+They provide a new way for declaring functions in JavaScript.
+
+**Key points to remember about classes:**
+
+**Unlike functions, classes are not hoisted. A Class cannot be used before it's declared.**
+
+**A Class can inherit properties and methods from other Classes by using the extend keyword.**
+
+**All the syntaxes inside the class must follow the strict mode ('use strict) of JavaScript. Error will be thrown if the strict mode rules are not followed.**
+
+Below is a way of declaring a function constructor before and after.
+
+```
+function Student(name, rollNumber, grade, section) {
+  this.name = name;
+  this.rollNumber = rollNumber;
+  this.grade = grade
+  this.section = section
+}
+
+// Ways to add methods to a constructor function 
+Student.prototype.getDetails = function() {
+  return 'Name: ${this.name}, Roll no: ${this.rollNumber}, Grade: ${this.grade}, Section:${this.section}';
+}
+
+// ES6 Version Classes
+
+class Student {
+  constructor(name, rollNumber, grade, section) {
+    this.name = name
+    this.rollNumber = rollNumber
+    this.grade = grade
+    this.section = section
+  }
+
+  getDetails() {
+    return 'Name: ${this.name}, Roll no: ${this.rollNumber}, Grade: ${this.grade}, Section:${this.section}';
+  }
+}
+```
+
+## 26. What are generator functions?
+
+Introduced in the ES6 version, generator functions are a special class of functions.
+
+**They can be stopped midway and then continue from where it had stopped.**
+
+Generator functions are declared with the **function*** keyword instead of the normal function.
+
+```
+function* genFunc() {
+  // Perform operation
+}
+```
+
+In normal functions, we can use the **return** keyword to return a value and as soon as the return statement gets executed, the function execution stops:
+
+```
+function normalFunc() {
+  return 22
+  console.log(2) // this line of code doesn't get executed as the return statement has already been executed.
+}
+```
+
+In the case of generator functions, when called, they do not execute the code, instead they return a **generator object**. This generator object handles the execution. 
+
+```
+function* genFunc() {
+  yield 3;
+  yield 4;
+}
+genFunc(); // Returns Object [Generator] {}
+```
+
+The generator object consists of the a method called **next()**, this method when called, executes the code until the nearest yield statement, and returns the yield value.
+
+For example if we run the next() method on the above code:
+
+```
+genFunc().next(); // Returns {value: 3, done:false}
+```
+
+As one can see the next method returns an object consisting of **value** and **done** properties.
+
+Value property represents the yielded value.
+
+Done property tells us whether the function code is finished or not. (returns true if finished.)
+
+**Generator functions are used to return iterators.**
+
+```
+function* iteratorFunc() {
+  let count = 0;
+  for (let i = 0; i < 2; i++) {
+    count++
+    yield i 
+  }
+  return count;
+}
+
+let iterator = iteratorFunc();
+console.log(iterator.next()); // {value:0,done:false}
+console.log(iterator.next()); // {value:1,done:false}
+console.log(iterator.next()); // {value:2,done:true}
+```
+
+As you can see in the code above, the last line returns **done:true**, since the code reaches the return statement.
+
+## 27. Explain **WeakSet** in JavaScript.
+
+In JavaScript, Set is a collection of unique and ordered elements.
+
+Just like Set, WeakSet is also a collection of unique and ordered elements with some key differences.
+
+**Weakset only contains objects and no other type.**
+
+**An object inside the weakset is referenced weakly. If the object inside the weakset does not have a reference, it will be garbage collected.**
+
+**Unlike Set, WeakSet only has three methods add(), delete() and has().**
+
+```
+const newSet = new Set([4, 5, 6, 7])
+console.log(newSet); // Outputs Set { 4, 5, 6, 7 }
+
+const newSet2 = new WeakSet([3, 4, 5]); // Throw an error
+
+let obj1 = {message: "Hello world"}
+const newSet3 = new WeakSet([obj1]);
+console.log(newSet3.has(obj1)); // true
+```
+
+## 28. Explain **WeakMap** in JavaScript.
+
+In JavaScript, Map is used to store key-value pairs. The key-value can be both primitive and non primitive types.
+
+**WeakMap is similar to Map with key differences:**
+
+**The keys and values in a weakMap should always be an object.**
+
+**If there are no references to the object, the object will be garbage collected.**
+
+```
+const map1 = new Map();
+map1.set('Value', 1);
+
+const map2 = new WeakMap();
+map2.set('Value', 2.3) // Throws an error.
+
+let obj = { name:"Vivek"};
+const map3 = new WeakMap();
+map3.set(obj, {age:23})
+````
+## 29. What is Object Destructuring?
+
+Object destructuring is a new way to extract from an object or an array.
+
+Before ES6 Version:
+
+```
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard: 1
+}
+
+const classStrength = classDetails.strength
+const classBenches = classDetails.benches
+const classBlackBoard = classDetails.blackBoard
+```
+
+The same example above using object destructuring:
+
+```
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard: 1
+}
+
+const {strength:classStrength, benches:classBenches,blackBoard:classBlackBoard} = classDetails;
+
+console.log(classStrength) // Outputs 78
+console.log(classBenches) // Outputs 39
+console.log(classBlackBoard)  // Outputs 1
+```
+
+```
+const arr = [1, 2, 3, 4];
+const first = arr[0];
+const second = arr[1];
+const third = arr[2];
+const fourth = arr[3];
+```
+## 30. What is a Temporal Dead Zone?
+
+Temporal Dead Zone is a behaviour that occurs with variables declared using let and const keywords.
+
+It is a behaviour where we try to access a variable before it's initialized.
+
+```
+x = 23; // Gives reference error
+
+let x;
+
+function anotherRandomFunc() {
+  message = "Hello"; // Throws a reference error
+
+  let message;
+}
+
+anotherRandomFunc()
+```
